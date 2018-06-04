@@ -1161,7 +1161,7 @@ prediction.RF.long3<-predict(rf.long3, test.RF.long3)
 error.rf.long3<-postResample(prediction.RF.long3, test.RF.long3$LONGITUDE) 
 #RMSE= 5,36 # Rsquared= 0,98
 
-# We create a dataset with the errors:
+# Create a dataset with the errors on Latitude:
 a<-data.frame(c("RMSE", "Rsquared", "MAE"), c(error.lat.1, error.lat.2, error.lat.3))
 colnames(a)[1]<-"METRICS"
 colnames(a)[2]<-"ERROR"
@@ -1169,11 +1169,9 @@ a<-a[-c(3,6,9),]
 df.RMSE<-a[c(1,3,5),]  
 df.Rsquared<-a[c(2,4,6),]
 RMSE_latitude<-mean(df.RMSE$ERROR)
-#3.651483
 RSquared_latitude<-mean(df.Rsquared$ERROR)
-#0.987053
 
-
+# Create a table with errors on Longitude: 
 b<-data.frame(c("RMSE", "Rsquared", "MAE"), c(error.long.1, error.long.2, error.long.3))
 colnames(b)[1]<-"METRICS"
 colnames(b)[2]<-"ERROR"
@@ -1181,50 +1179,11 @@ b<-b[-c(3,6,9),]
 df.RMSE.long<-b[c(1,3,5),]  
 df.Rsquared.long<-b[c(2,4,6),]
 RMSE_longitude<-mean(df.RMSE.long$ERROR)
-#4.3811
 RSquared_longitude<-mean(df.Rsquared.long$ERROR)
-#0.983055
 
 distances<-- c("Longitude", "Latitude")
 matrix.long<- c()
 
 
-
-
-
-
-####ªª More WAPS were changed from B2 and B3, this is way the predictions
-#      are worst on those building 
-------------------------------------------------
-  ------------------------------------------------
-
---------------------  ##Alexito ---------------------
-
-WantToVisit<-function(country) {
-  sentence<-paste("I want to go to", country, sep=" FUCKING ")
-  print(sentence)
-}
-  
-WantToVisit("SouthAfrica")
-
-sayHelloTo <- function(friend) {
-  greeting <- paste("hola", friend)
-  print(greeting)
-}
-sayHelloTo("your mum")
-
-
-
-
-norm<- function(x){
-  y= x - min(x) / max(x) - min(x)
-  print (y)
-}
-
-
-
-for ( i in 1:10)
-  if (i %% 2)
-   print(i)
 
 
